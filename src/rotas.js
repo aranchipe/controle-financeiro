@@ -1,5 +1,5 @@
 const express = require("express");
-const { functionTest } = require("./controllers/billings");
+const { registerBilling, listBillings } = require("./controllers/billings");
 const { signin, signup } = require("./controllers/users");
 const { checkSignin } = require("./middlewares/checkSignin");
 
@@ -10,8 +10,7 @@ rotas.post("/signup", signup);
 
 rotas.use(checkSignin);
 
-rotas.get("/test", async (req, res) => {
-  return res.json("voce esta logado");
-});
+rotas.post("/registros", registerBilling);
+rotas.get("/registros", listBillings);
 
 module.exports = rotas;
